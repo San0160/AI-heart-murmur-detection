@@ -8,3 +8,4 @@ librosa==0.10.1
 soundfile==0.12.1
 huggingface-hub==0.20.3
 numba==0.57.1
+keras==2.15.0
