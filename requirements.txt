@@ -1,0 +1,9 @@
+streamlit           # UI
+tensorflow          # ml framework
+numpy               # logics
+pandas              # data analysis
+scikit-learn        # data splitting
+matplotlib          # data visulas 
+librosa             # audio processing
+soundfile           # audio file handling
+huggingface-hub     # model loading
