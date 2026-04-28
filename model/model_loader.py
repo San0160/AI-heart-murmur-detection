@@ -1,3 +1,6 @@
+import os
+os.environ["TF_USE_LEGACY_KERAS"] = "1"
+
 import tensorflow as tf
 import streamlit as st
 from huggingface_hub import hf_hub_download
@@ -17,7 +20,7 @@ def load_model():
         )
 
         logger.info("loading tenssorflow model")
-        model = tf.keras.models.load_model(model_path)
+        model = tf.keras.models.load_model(model_path, compile = False)
         model.compile(
             optimizer = "adam",
             loss = "categorical_crossentropy",
