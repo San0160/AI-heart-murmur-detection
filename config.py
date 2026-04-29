@@ -9,4 +9,4 @@ N_MFCC = 52
 
 # Hugging face model config
 HF_REPO_ID = "San0160/heart_murmur"
-HF_MODEL_FILENAME = "lstm_model.keras"
+HF_MODEL_FILENAME = "lstm_model1.keras"
