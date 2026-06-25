@@ -11,12 +11,12 @@ data_ingestion:
 data_validation:
   root_dir: artifacts/data_validation
   STATUS_FILE: artifacts/data_validation/status.txt
-  ALL_REQUIRED_FILES: ["train", "test"]
+  ALL_REQUIRED_FILES: ["artifact", "extrahls", "extrastole", "murmur", "normal", "unlabel"]
 
 
 data_processing:
   root_dir: artifacts/data_preprocessing
-  local_data_file: artifacts/data_preprocessing/processed_data.csv
+  local_data_file: artifacts/data_preprocessing/processed_data/
 
 data_transformation:
   root_dir: artifacts/data_transformation
