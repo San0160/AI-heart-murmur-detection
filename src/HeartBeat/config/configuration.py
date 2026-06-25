@@ -1,6 +1,6 @@
 from HeartBeat.constant import *
 from HeartBeat.utils.common import read_yaml, create_directories
-from HeartBeat.entity import DataingestionConfig, DataValidationConfig, DataPreprocessingConfig
+from HeartBeat.entity import DataingestionConfig, DataValidationConfig, DataPreprocessingConfig, DataTransformerConfig
 
 class configurationManager:
     def __init__(
@@ -51,5 +51,18 @@ class configurationManager:
         )
 
         return data_preprocessing_config
+    
+    def get_data_transformer_config(self) -> DataTransformerConfig:
+        config = self.config.data_transformation
+
+        create_directories([config.root_dir])
+
+        data_transformer_config = DataTransformerConfig(
+            root_dir = config.root_dir,
+            local_data_file = config.local_data_file,
+            preprocessed_data_path = config.preprocessed_data_path
+        )
+
+        return data_transformer_config
     
     
