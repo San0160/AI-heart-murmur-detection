@@ -24,13 +24,23 @@ data_transformation:
 
 
 model_trainer:
-  root_dir:  artifacts/model_trainer
-  data_path: artifacts/data_preprocessing/processed_data.csv
-  vectorizer_path: artifacts/data_transformation/tfidf.pkl
-  model_path: artifacts/model_trainer/knn_model.pkl
-  n_neighbors: 10
-  metric: cosine
-  algorithm: brute
+  root_dir: artifacts/model_training
+
+  transformed_data_path: artifacts/data_transformation
+
+  trained_model_path: artifacts/model_training/heart_murmur_model.pth
+
+  input_size: 1
+  hidden_size: 64
+  num_layers: 1
+  num_classes: 3
+  dropout: 0.5
+
+  batch_size: 32
+  learning_rate: 0.001
+  epochs: 50
+  patience: 15
+  weight_decay: 0.0001 
 
 model_evaluation:
   root_dir:  artifacts/model_evaluation
