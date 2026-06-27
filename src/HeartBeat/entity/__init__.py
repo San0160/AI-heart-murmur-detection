@@ -27,18 +27,45 @@ class DataTransformerConfig:
 
 @dataclass(frozen=True)
 class ModelTrainerConfig:
+    # Directories
     root_dir: Path
     transformed_data_path: Path
     trained_model_path: Path
 
+    # Model Architecture
     input_size: int
     hidden_size: int
     num_layers: int
     num_classes: int
     dropout: float
 
+    # Training Hyperparameters
     batch_size: int
     learning_rate: float
     epochs: int
     patience: int
-    weight_decay: float
+
+@dataclass(frozen=True)
+class ModelEvaluationConfig:
+    root_dir: Path
+
+    # Inputs
+    transformed_data_path: Path
+    trained_model_path: Path
+
+    # Outputs
+    metrics_path: Path
+    confusion_matrix_path: Path
+
+    # Evaluation
+    batch_size: int
+
+    # Model Architecture
+    input_size: int
+    hidden_size: int
+    num_layers: int
+    num_classes: int
+    dropout: float
+
+    # Labels
+    classes: list[str]

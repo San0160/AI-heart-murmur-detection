@@ -28,17 +28,18 @@ model_trainer:
   transformed_data_path: artifacts/data_transformation
   trained_model_path: artifacts/model_training/heart_murmur_model.pth
 
+  # Model
   input_size: 1
   hidden_size: 64
   num_layers: 1
   num_classes: 3
   dropout: 0.5
 
+  # Training
   batch_size: 32
   learning_rate: 0.001
-  epochs: 50
+  epochs: 100
   patience: 15
-  weight_decay: 0.0001
 
 model_evaluation:
   root_dir: artifacts/model_evaluation

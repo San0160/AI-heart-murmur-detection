@@ -1,6 +1,6 @@
 from HeartBeat.constant import *
 from HeartBeat.utils.common import read_yaml, create_directories
-from HeartBeat.entity import DataingestionConfig, DataValidationConfig, DataPreprocessingConfig, DataTransformerConfig, ModelTrainerConfig
+from HeartBeat.entity import DataingestionConfig, DataValidationConfig, DataPreprocessingConfig, DataTransformerConfig, ModelTrainerConfig, ModelEvaluationConfig
 
 class configurationManager:
     def __init__(
@@ -85,7 +85,32 @@ class configurationManager:
             learning_rate=config.learning_rate,
             epochs=config.epochs,
             patience=config.patience,
-            weight_decay=config.weight_decay,
+        )
+    
+    def get_model_evaluation_config(self) -> ModelEvaluationConfig:
+
+        config = self.config.model_evaluation
+
+        create_directories([config.root_dir])
+
+        return ModelEvaluationConfig(
+            root_dir=Path(config.root_dir),
+
+            transformed_data_path=Path(config.transformed_data_path),
+            trained_model_path=Path(config.trained_model_path),
+
+            metrics_path=Path(config.metrics_path),
+            confusion_matrix_path=Path(config.confusion_matrix_path),
+
+            batch_size=config.batch_size,
+
+            input_size=config.input_size,
+            hidden_size=config.hidden_size,
+            num_layers=config.num_layers,
+            num_classes=config.num_classes,
+            dropout=config.dropout,
+
+            classes=config.classes
         )
     
     
