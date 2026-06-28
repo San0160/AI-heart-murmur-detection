@@ -69,3 +69,16 @@ class ModelEvaluationConfig:
 
     # Labels
     classes: list[str]
+
+@dataclass(frozen=True)
+class PredictionConfig:
+    root_dir: Path
+    trained_model_path: Path
+
+    input_size: int
+    hidden_size: int
+    num_layers: int
+    num_classes: int
+    dropout: float
+
+    classes: list

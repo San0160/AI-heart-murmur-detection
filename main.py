@@ -4,6 +4,7 @@ from HeartBeat.pipeline.stage_03_DP import DataProcessingTrainingPipeline
 from HeartBeat.pipeline.stage_04_DT import DataTransformerTrainingPipeline
 from HeartBeat.pipeline.stage_05_MT import ModelTrainerTrainingPipeline
 from HeartBeat.pipeline.stage_06_ME import ModelEvaulationTrainingPipeline
+from HeartBeat.pipeline.prediction import ModelPredictionTrainingPipeline
 from HeartBeat.logging import logger
 
 STAGE_NAME = "Data Ingestion Stage"
@@ -62,10 +63,21 @@ except Exception as e:
     logger.exception(e)
     raise e
 
-STAGE_NAME = "Model Training Stage"
+STAGE_NAME = "Model Evaluation Stage"
 try:
     logger.info(f">>>>>> Stage {STAGE_NAME} Started <<<<<<<<<<")
     model_evaluation = ModelEvaulationTrainingPipeline()
+    model_evaluation.main()
+    logger.info(f">>>>>>>>> Stage {STAGE_NAME} Completed <<<<<<<<<<")
+
+except Exception as e:
+    logger.exception(e)
+    raise e
+
+STAGE_NAME = "Model Prediction Stage"
+try:
+    logger.info(f">>>>>> Stage {STAGE_NAME} Started <<<<<<<<<<")
+    model_evaluation = ModelPredictionTrainingPipeline()
     model_evaluation.main()
     logger.info(f">>>>>>>>> Stage {STAGE_NAME} Completed <<<<<<<<<<")
 

@@ -96,6 +96,32 @@ class preprocessing():
 
         return data
     
+    def preprocess_audio(self, audio_path, duration=10, sr=22050):
+        """
+        Preprocess a single audio file for prediction.
+        """
+
+        input_length = sr * duration
+        features = 52
+
+        X, sr = librosa.load(audio_path, sr=sr, duration=duration)
+
+        dur = librosa.get_duration(y=X, sr=sr)
+
+        if round(dur) < duration:
+            X = librosa.util.fix_length(X, size=input_length)
+
+        mfcc = np.mean(
+            librosa.feature.mfcc(
+                y=X,
+                sr=sr,
+                n_mfcc=features
+            ).T,
+            axis=0
+        )
+
+        return mfcc.reshape([-1, 1])
+    
     def load_all_categories(self, categories, sample_rate=22050, duration=10):
         """
         categories: list of dicts with keys:

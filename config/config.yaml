@@ -67,3 +67,18 @@ model_evaluation:
     - artifact
     - murmur
     - normal
+
+prediction:
+  root_dir: artifacts/prediction
+  trained_model_path: artifacts/model_training/heart_murmur_model.pth
+
+  input_size: 1
+  hidden_size: 64
+  num_layers: 1
+  num_classes: 3
+  dropout: 0.5
+
+  classes:
+    - artifact
+    - murmur
+    - normal
