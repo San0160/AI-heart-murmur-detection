@@ -6,7 +6,7 @@ class ModelPredictionTrainingPipeline:
     def __init__ (self):
         pass    
 
-    def main(self):
+    def main(self, audio_path):
         config = configurationManager()
 
         prediction_config = config.get_prediction_config()
@@ -15,14 +15,19 @@ class ModelPredictionTrainingPipeline:
         preprocessor = preprocessing(preprocessing_config)
         predictor = PredictionPipeline(prediction_config)
 
+        # Load Model
         model = predictor.load_model()
 
-        audio_path = r"C:\Users\Sandeep\Desktop\Projects\AI-heart-murmur-detection\test_files\murmur__171_1307971016233_D.wav"
+        # Load Audio to test
+        #audio_path = r"C:\Users\Sandeep\Desktop\Projects\AI-heart-murmur-detection\test_files\murmur__171_1307971016233_D.wav"
 
         features = preprocessor.preprocess_audio(audio_path)
 
         loader = predictor.create_prediction_loader(features)
 
+        # Predict
         prediction = predictor.predict(model, loader)
 
         print(prediction)
+
+        return prediction
