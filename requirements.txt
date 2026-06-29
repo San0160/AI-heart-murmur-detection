@@ -11,6 +11,7 @@ seaborn
 fastapi
 uvicorn
 python-multipart
+huggingface_hub
 
 # PyTorch (CPU)
 --extra-index-url https://download.pytorch.org/whl/cpu

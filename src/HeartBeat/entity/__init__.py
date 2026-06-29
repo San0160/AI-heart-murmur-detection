@@ -75,6 +75,9 @@ class PredictionConfig:
     root_dir: Path
     trained_model_path: Path
 
+    repo_id: str
+    filename: str
+
     input_size: int
     hidden_size: int
     num_layers: int

@@ -72,6 +72,9 @@ prediction:
   root_dir: artifacts/prediction
   trained_model_path: artifacts/model_training/heart_murmur_model.pth
 
+  repo_id: San0160/Heart-murmur-classifier
+  filename: heart_murmur_model.pth
+
   input_size: 1
   hidden_size: 64
   num_layers: 1

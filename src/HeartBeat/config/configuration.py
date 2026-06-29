@@ -126,6 +126,8 @@ class configurationManager:
             num_layers=config.num_layers,
             num_classes=config.num_classes,
             dropout=config.dropout,
+            repo_id=self.config.prediction.repo_id,
+            filename=self.config.prediction.filename,
 
             classes=config.classes
         )

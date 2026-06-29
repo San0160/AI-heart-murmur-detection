@@ -1,6 +1,7 @@
 from HeartBeat.config.configuration import configurationManager
 from HeartBeat.components.data_processing import preprocessing
 from HeartBeat.components.model_prediction import PredictionPipeline
+from HeartBeat.components.model_downloader import ModelDownloader
 
 class ModelPredictionTrainingPipeline:
     def __init__ (self):
@@ -11,6 +12,9 @@ class ModelPredictionTrainingPipeline:
 
         prediction_config = config.get_prediction_config()
         preprocessing_config = config.get_data_preprocessing_config()
+
+        downloader = ModelDownloader(prediction_config)
+        downloader.download_if_missing()
 
         preprocessor = preprocessing(preprocessing_config)
         predictor = PredictionPipeline(prediction_config)
@@ -27,7 +31,5 @@ class ModelPredictionTrainingPipeline:
 
         # Predict
         prediction, confidence = predictor.predict(model, loader)
-
-        print(prediction)
 
         return prediction, confidence
