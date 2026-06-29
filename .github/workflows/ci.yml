@@ -30,6 +30,17 @@ jobs:
       run: |
         docker build -t heartbeat-api .
 
+    - name: Run Docker container
+      run: |
+        docker run -d -p 8000:8000 --name heartbeat heartbeat-api
+
+    - name: Wait for API
+      run: sleep 10  
+
+    - name: Health Check
+      run: |
+        curl http://localhost:8000/
+
 
 
 
