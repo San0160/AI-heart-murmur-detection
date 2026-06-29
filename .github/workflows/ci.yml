@@ -1,0 +1,30 @@
+# display name
+name : Heart murmur CI
+
+# When to deploy, CI
+on:
+  push:
+    branches:
+      -main
+
+# Where to deploy
+jobs:
+  build:
+    runs-on: ubuntu-latest # Fastest virtual env
+
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v4  # clones the rep in empty vm
+
+    - name:  Set up Python
+      uses: actions/checkout@v4
+
+    - name: Set up Python
+      uses: actions/setup-python@v5
+      with:
+        python-version: "3.10"
+  
+
+
+
+
