@@ -6,7 +6,6 @@ import librosa
 import librosa.display
 import seaborn as sns
 import matplotlib.pyplot as plt
-import IPython.display as ipd
 import fnmatch
 import math
 

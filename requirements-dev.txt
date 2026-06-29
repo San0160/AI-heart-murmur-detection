@@ -1,0 +1,27 @@
+numpy
+pandas
+scikit-learn
+matplotlib
+librosa
+soundfile
+huggingface-hub
+numba
+tensorflow
+keras
+notebook
+seaborn
+fastapi
+uvicorn
+python-multipart 
+
+--extra-index-url https://download.pytorch.org/whl/cu121
+
+torch==2.2.2
+torchvision==0.17.2
+torchaudio==2.2.2
+
+PyYAML                  # read your config.yaml and params.yaml
+python-box              # access yaml values as dot notation (config.training.lr)
+ensure                  # type validation on your config values
+
+-e .
