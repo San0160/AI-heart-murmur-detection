@@ -26,8 +26,8 @@ class ModelPredictionTrainingPipeline:
         loader = predictor.create_prediction_loader(features)
 
         # Predict
-        prediction = predictor.predict(model, loader)
+        prediction, confidence = predictor.predict(model, loader)
 
         print(prediction)
 
-        return prediction
+        return prediction, confidence

@@ -4,6 +4,7 @@ import torch
 import torch.nn as nn
 import numpy as np
 from torch.utils.data import TensorDataset, DataLoader
+import torch.nn.functional as F
 
 class PredictionPipeline():
 
@@ -63,6 +64,9 @@ class PredictionPipeline():
 
                 outputs = model(X)
 
-                pred = outputs.argmax(dim=1).item()
+                probabilities = F.softmax(outputs, dim=1)
+                confidence, pred = torch.max(probabilities, dim=1)
+                prediction = classes[pred.item()]
+                confidence = round(confidence.item() * 100, 2)
 
-        return classes[pred]
+                return  prediction, confidence

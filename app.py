@@ -1,6 +1,7 @@
 from fastapi import FastAPI, UploadFile, File
 import shutil
 import os
+import uvicorn
 from HeartBeat.pipeline.prediction import ModelPredictionTrainingPipeline
 
 app = FastAPI(
@@ -27,8 +28,19 @@ async def predict(file : UploadFile = File(...)):
 
     prediction_pipeline = ModelPredictionTrainingPipeline()
 
-    prediction = prediction_pipeline.main(file_path)   
+    prediction, confidence = prediction_pipeline.main(file_path)   
 
     return {
-        "prediction": prediction
+        "prediction": prediction,
+        "status": "SUCESSS",
+        "filename": file.filename,
+        "confidence": confidence
     }
+
+if __name__ == "__main__":
+    uvicorn.run(
+        "app:app",
+        host="127.0.0.1",
+        port=8000,
+        reload=True
+    )
